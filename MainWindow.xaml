@@ -1,0 +1,22 @@
+﻿<Window x:Class="FSBLoad.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FSBLoad"
+        mc:Ignorable="d"
+        Title="Подождите" Height="100" Width="512"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="ToolWindow" Closing="Window_Closing" Loaded="Window_Loaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        
+        <TextBlock Grid.Row="0" Text="Идёт отправка данных в ФСБ. Пожалуйста, не выключайте компьютер" Margin="5,0,5,0"/>
+        <ProgressBar Grid.Row="1" Name="pb" Height="25" Width="500" IsIndeterminate="True" Margin="5"/>
+    </Grid>
+</Window>
